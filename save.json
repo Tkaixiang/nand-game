@@ -1,0 +1,80 @@
+{
+  "NandGame:Levels:INV": {
+    "nodes": [{ "type": "NAND", "x": 73, "y": 244, "id": "0" }],
+    "connections": [
+      {
+        "source": { "nodeId": "input", "connectorId": "0" },
+        "target": { "nodeId": "0", "connectorId": "0" }
+      },
+      {
+        "source": { "nodeId": "input", "connectorId": "0" },
+        "target": { "nodeId": "0", "connectorId": "1" }
+      },
+      {
+        "source": { "nodeId": "0", "connectorId": "0" },
+        "target": { "nodeId": "output", "connectorId": "0" }
+      }
+    ]
+  },
+  "NandGame:Levels:RELAY_NAND": {
+    "nodes": [
+      { "type": "RELAY-ON", "x": 150, "y": 164, "id": "0" },
+      { "type": "RELAY-OFF", "x": 118, "y": 313, "id": "1" }
+    ],
+    "connections": [
+      {
+        "source": { "nodeId": "1", "connectorId": "0" },
+        "target": { "nodeId": "0", "connectorId": "0" }
+      },
+      {
+        "source": { "nodeId": "input", "connectorId": "2" },
+        "target": { "nodeId": "0", "connectorId": "1" }
+      },
+      {
+        "source": { "nodeId": "input", "connectorId": "0" },
+        "target": { "nodeId": "1", "connectorId": "0" }
+      },
+      {
+        "source": { "nodeId": "input", "connectorId": "1" },
+        "target": { "nodeId": "1", "connectorId": "1" }
+      },
+      {
+        "source": { "nodeId": "0", "connectorId": "0" },
+        "target": { "nodeId": "output", "connectorId": "0" }
+      }
+    ]
+  },
+  "NandGame:Levels": ["RELAY_NAND", "INV", "AND", "OR"],
+  "NandGame:Levels:OR": {
+    "nodes": [
+      { "type": "AND", "x": 108, "y": 307, "id": "0" },
+      { "type": "INV", "x": 230, "y": 300, "id": "1" },
+      { "type": "NAND", "x": 342, "y": 297, "id": "2" }
+    ],
+    "connections": []
+  },
+  "NandGame:Levels:AND": {
+    "nodes": [
+      { "type": "NAND", "x": 84, "y": 318, "id": "0" },
+      { "type": "INV", "x": 66, "y": 166, "id": "1" }
+    ],
+    "connections": [
+      {
+        "source": { "nodeId": "input", "connectorId": "0" },
+        "target": { "nodeId": "0", "connectorId": "0" }
+      },
+      {
+        "source": { "nodeId": "input", "connectorId": "1" },
+        "target": { "nodeId": "0", "connectorId": "1" }
+      },
+      {
+        "source": { "nodeId": "0", "connectorId": "0" },
+        "target": { "nodeId": "1", "connectorId": "0" }
+      },
+      {
+        "source": { "nodeId": "1", "connectorId": "0" },
+        "target": { "nodeId": "output", "connectorId": "0" }
+      }
+    ]
+  }
+}
