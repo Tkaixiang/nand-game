@@ -11,7 +11,7 @@
 | 1       | 0       | 1      |
 | 1       | 1       | 0      |
 
-![](assets/1.png)
+<img src="assets/1.png" width="350"/>
 
 - _Note:_ The "spinny magnetic field" is indeed a **magnetic field** that attracts when powered
 
@@ -22,7 +22,7 @@
 | 0     | 1      |
 | 1     | 0      |
 
-![](assets/2.png)
+<img src="assets/2.png" width="350"/>
 
 ## 3. `AND` (opposite of `NAND`)
 
@@ -35,7 +35,7 @@
 | 1       | 0       | 0      |
 | 1       | 1       | 1      |
 
-![](assets/3.png)
+<img src="assets/3.png" width="350"/>
 
 ## 4. `OR`
 
@@ -48,4 +48,21 @@
 | 1       | 0       | 1      |
 | 1       | 1       | 1      |
 
-- What we need is a _nullify_ effect (does nothing) since the original power switches already provide this result
+- We **invert** the inputs into `NAND`
+
+<img src="assets/4.png" width="350"/>
+
+## 5. `XOR` (Exclusive OR)
+
+- Returns **Positive** (`1`) when the inputs are **different**
+
+| Input A | Input B | Output |
+| ------- | ------- | ------ |
+| 0       | 0       | 0      |
+| 0       | 1       | 1      |
+| 1       | 0       | 1      |
+| 1       | 1       | 0      |
+
+- Sort of a "both gates must agree" to pass
+
+<img src="assets/5.png" width="350"/>
