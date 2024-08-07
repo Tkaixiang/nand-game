@@ -139,3 +139,51 @@
     - _This is part of a "Zero Balance"_
   - Taking into account the **sign (`1`)**, it is a `-ve` and we get `-2`
   - $\therefore$ _We need to "balance it out" by adding `1`_ afterwards
+
+## 9. Equal to Zero
+
+- Output `1` only if all inputs are `0`
+
+<img src="assets/11.png" width="350"/>
+
+- _(is this even optimal?)_
+
+## 10. Equal to Zero
+
+- Output `1` if the **MSB (`15th-bit`)** is `1` (indicates `-ve` as noted in `8.`)
+
+<img src="assets/12.png" width="350"/>
+
+## 11. Selector
+
+- The `s` (`Select`) bit selects which **<u>input</u>** to select.
+  - If `s==0`, select `d0`, if `s==1`, select `d1`
+
+| S   | D0  | D1  | Out |
+| --- | --- | --- | --- |
+| 0   | 0   | 0   | 0   |
+| 0   | 0   | 1   | 0   |
+| 0   | 1   | 0   | 1   |
+| 0   | 1   | 1   | 1   |
+| 1   | 0   | 0   | 0   |
+| 1   | 0   | 1   | 1   |
+| 1   | 1   | 0   | 0   |
+| 1   | 1   | 1   | 1   |
+
+<img src="assets/13.png" width="350"/>
+
+- Use 2 `AND` to conditionally select, but invert the `s==0`
+
+## 12. Switch
+
+- The `s` (`Switch`) bit selects which **<u>output</u>** to output to.
+  - If `s==0`, output to `c0`, if `s==1`, output to `c1`
+
+| S   | In  | D0  | D1  |
+| --- | --- | --- | --- |
+| 0   | 0   | 0   | 0   |
+| 0   | 1   | 1   | 0   |
+| 1   | 0   | 0   | 0   |
+| 1   | 1   | 0   | 1   |
+
+<img src="assets/14.png" width="350"/>
