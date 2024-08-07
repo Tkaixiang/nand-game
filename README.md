@@ -65,7 +65,13 @@
 
 - Sort of a "both gates must agree" to pass
 
+### Least Components Solution
+
 <img src="assets/5.png" width="350"/>
+
+### Least Nand Gates Solution (wtf)
+
+<img src="assets/5-1.png" width="350"/>
 
 ## 6. Half `Adder`
 
@@ -187,3 +193,18 @@
 | 1   | 1   | 0   | 1   |
 
 <img src="assets/14.png" width="350"/>
+
+## 13. Logic Unit
+
+- Select between 4 operations depending on `op0` and `op1`
+
+| op1 | op0 | Operation |
+| --- | --- | --------- |
+| 0   | 0   | X AND Y   |
+| 0   | 1   | X OR Y    |
+| 1   | 0   | X XOR Y   |
+| 1   | 1   | Invert X  |
+
+<img src="assets/15.png" width="350"/>
+
+- _(optimal is 7 components, but this uses 8)_
