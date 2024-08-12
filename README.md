@@ -1,5 +1,7 @@
 # Nand Game Adventures
 
+- `save.json` contains the save for `nandgame`
+
 ## 1. `NAND` (opposite of `AND`)
 
 - Only returns **Negative** (`0`) if **both signals (`AND`)** are **positive**
@@ -196,7 +198,7 @@
 
 ## 13. Logic Unit
 
-- Select between 4 operations depending on `op0` and `op1`
+- Select between 4 **Logic** Operations depending on `op0` and `op1`
 
 | op1 | op0 | Operation |
 | --- | --- | --------- |
@@ -208,3 +210,94 @@
 <img src="assets/15.png" width="350"/>
 
 - _(optimal is 7 components, but this uses 8)_
+
+## 14. Arithmetic Unit
+
+- Select between 4 **Arithmetic** Operations depending on `op0` and `op1`
+
+| op1 | op0 | Operation |
+| --- | --- | --------- |
+| 0   | 0   | X + Y     |
+| 1   | 0   | X - Y     |
+| 0   | 1   | X + 1     |
+| 1   | 1   | X - 1     |
+
+<img src="assets/16.png" width="350"/>
+
+## 15. Arithmetic Logic Unit (ALU)
+
+- Select between 9 **Arithmetic** Operations depending on `op0`, `op1` and `u`
+- Also provides 2 additional **flags**:
+  - When `sw` flag is `1`, `X` and `Y` are **swapped**
+  - When `zx` flag is `1`, **left operand** is set to `0`
+
+| u   | op1 | op0 | Operation |
+| --- | --- | --- | --------- |
+| 0   | 0   | 0   | X AND Y   |
+| 0   | 0   | 1   | X OR Y    |
+| 0   | 1   | 0   | X XOR Y   |
+| 0   | 1   | 1   | Invert X  |
+| 1   | 0   | 0   | X + Y     |
+| 1   | 1   | 0   | X - Y     |
+| 1   | 0   | 1   | X + 1     |
+| 1   | 1   | 1   | X - 1     |
+
+| zx  | sw  | Effective Operation |
+| --- | --- | ------------------- |
+| 0   | 0   | X - Y               |
+| 0   | 1   | Y - X               |
+| 1   | 0   | 0 - Y               |
+| 1   | 1   | 0 - X               |
+
+<img src="assets/17.png" width="350"/>
+
+## 16. Condition
+
+- Given 3 flags below which each represent a condition:
+
+| Flag | Condition         |
+| ---- | ----------------- |
+| lt   | Less than zero    |
+| eq   | Equal to zero     |
+| gt   | Greater than zero |
+
+- We want to output when 1:
+
+| lt  | eq  | gt  | Output 1 When |
+| --- | --- | --- | ------------- |
+| 0   | 0   | 0   | Never         |
+| 0   | 0   | 1   | X > 0         |
+| 0   | 1   | 0   | X = 0         |
+| 0   | 1   | 1   | X ≥ 0         |
+| 1   | 0   | 0   | X < 0         |
+| 1   | 0   | 1   | X ≠ 0         |
+| 1   | 1   | 0   | X ≤ 0         |
+| 1   | 1   | 1   | Always        |
+
+<img src="assets/18.png" width="350"/>
+
+## 17. SR Latch (Set/Reset Latch)
+
+- `s=1` (**set**) sets output to `1`
+- `r=1` (**reset**) sets output to `0`
+
+- When both `s=1,r=1`, the output takes the **<u>Previous Output</u>**
+
+| s   | r   | Output          |
+| --- | --- | --------------- |
+| 1   | 0   | 1               |
+| 0   | 1   | 0               |
+| 1   | 1   | Previous output |
+| 0   | 0   | Not used        |
+
+<img src="assets/19.png" width="350"/>
+
+- Behaviour when we activate `r` then `s` (output is `0`)
+  - When `r` is activated, `Left-Nand` `b=1` is set which causes `Left-Nand` to output `0` and set `Right-Nand` `a=0`
+  - When `s` is activated, it sets `Right-Nand` `b=1`. But this is not enough to change anything since `Right-Nand`'s `a=0` already
+
+<img src="assets/19-1.png" width="350"/>
+
+- Behaviour when we activate `s` then `r` (output is `1`)
+  - When `s` is activated, `Right-Nand` `b=1` is set which causes `Right-Nand` to output `0` and set `Left-Nand`'s `a=0`
+  - When `r` is activated, it sets `Left-Nand`'s `b=1`. But this is not enough to change anything since `Left-Nand`'s `a=0` already.
